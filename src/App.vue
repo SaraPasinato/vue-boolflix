@@ -28,7 +28,6 @@ export default {
       if(type ==='all'){
        this.getApi(text,'movie');
        this.getApi(text,'tv');
-       this.catalogs=[...this.movies,...this.series];
       }else{
         this.catalogs=this.getApi(text,type);
       }
@@ -46,10 +45,11 @@ export default {
         .then((res) => {
           if(type==='movie'){
             this.movies= res.data.results;
+            
           }else{
             this.series= res.data.results;
           }
-
+          this.catalogs=[...this.movies,...this.series];
         })
         .catch((err) => {
           console.log(err);
