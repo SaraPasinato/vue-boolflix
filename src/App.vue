@@ -30,7 +30,7 @@ export default {
        this.getApi(text,'tv');
        this.catalogs=[...this.movies,...this.series];
       }else{
-        this.catalog=this.getApi(text,type);
+        this.catalogs=this.getApi(text,type);
       }
        
     },
