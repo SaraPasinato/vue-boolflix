@@ -1,6 +1,6 @@
 <template>
   <div class="card" >
-               <h3>{{movie.title}}</h3>
+               <h3>{{movie.title || movie.name}}</h3>
                <h4>{{movie.original_title}}</h4>
                <p v-if="getFlag()"><img :src="pathFlag" :alt="movie.original_language"></p>
                <p v-else>{{movie.original_language}}</p>

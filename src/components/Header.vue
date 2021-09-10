@@ -1,8 +1,7 @@
 <template>
   <header>
       <input type="text" placeholder="Ricerca Films" v-model.trim="currentText">
-      <button @click.prevent="$emit('searchMovie',currentText)"
-> Cerca</button>
+      <button @click="$emit('searchMovie',currentText,'all')"> Cerca</button>
   </header>
 </template>
 

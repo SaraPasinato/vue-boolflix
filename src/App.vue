@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <Header @searchMovie="searchMovie" />
+    <Header @searchMovie="search" />
     <main>
-      <Gallery :movies="movies"/>
+      <Gallery :movies="catalogs"/>
     </main>
   </div>
 </template>
@@ -16,19 +16,27 @@ export default {
   name: "App",
   data() {
     return {
-      baseUri: "https://api.themoviedb.org/3/search/movie",
+      baseUri: "https://api.themoviedb.org/3/search/",
       apiKey: "dd4f41ba1a167ca7033fd2dead8221ef",
-      movies: [],
-    
+      movies:[],
+      series:[],
+     catalogs:[],
     };
   },
   methods: {
-    searchMovie(text) {
-      this.getApi(text);
+    search(text,type) {
+      if(type ==='all'){
+       this.getApi(text,'movie');
+       this.getApi(text,'tv');
+       this.catalogs=[...this.movies,...this.series];
+      }else{
+        this.catalog=this.getApi(text,type);
+      }
+       
     },
-    getApi(text) {
+    getApi(text,type) {
       axios
-        .get(this.baseUri,{
+        .get(this.baseUri+type,{
           params: {
             api_key: this.apiKey,
             query:text,
@@ -36,7 +44,12 @@ export default {
           }
         })
         .then((res) => {
-          this.movies = res.data.results;
+          if(type==='movie'){
+            this.movies= res.data.results;
+          }else{
+            this.series= res.data.results;
+          }
+
         })
         .catch((err) => {
           console.log(err);
