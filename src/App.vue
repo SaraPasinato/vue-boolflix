@@ -2,7 +2,7 @@
   <div id="app">
     <Header @searchMovie="searchMovie" />
     <main>
-      <Gallery />
+      <Gallery :movies="movies"/>
     </main>
   </div>
 </template>
