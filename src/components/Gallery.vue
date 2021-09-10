@@ -1,32 +1,35 @@
 <template>
   <section id="gallery">
-   <div class="card" v-for="movie in movies" :key="movie.id">
-       <h3>{{movie.title}}</h3>
-       <h4>{{movie.original_title}}</h4>
-       <p>{{movie.original_language}}</p>
-       <p>{{movie.vote_average}}</p>
+   <div class="row">
+       <div class="col" v-for="movie in movies" :key="movie.id" >
+           <CardMovie :movie="movie"/>
+       </div>
    </div>
   </section>
 </template>
 
 <script>
-
+import CardMovie from './CardMovie.vue';
 export default {
     name:'Gallery',
     props:['movies'],
+    components:{
+        CardMovie,
+    }
 }
+
 </script>
 
 <style>
-#gallery{
+.row{
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
     
 }
-.card{
-  border:2px solid black;  
-  flex-basis: 25%;  
+
+.col{
+    flex-basis: calc(100%/3);
 }
 </style>
