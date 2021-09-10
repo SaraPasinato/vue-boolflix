@@ -30,6 +30,6 @@ export default {
 }
 
 .col{
-    flex-basis: calc(100%/3);
+    flex-basis: calc(100%/5);
 }
 </style>
