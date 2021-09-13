@@ -1,8 +1,8 @@
 <template>
-  <section id="gallery">
-   <div class="row">
+  <section id="gallery" class="container">
+   <div class="row" >
        <div class="col" v-for="movie in movies" :key="movie.id" >
-           <CardMovie :movie="movie"/>
+           <CardMovie :movie="movie" />
        </div>
    </div>
   </section>
@@ -26,10 +26,10 @@ export default {
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    
 }
 
 .col{
     flex-basis: calc(100%/5);
+    padding: 15px;
 }
 </style>

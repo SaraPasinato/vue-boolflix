@@ -1,11 +1,13 @@
 <template>
   <div id="app">
-    <header>
-      <Search
-        @searchMovie="search"
-        placeholder="Ricerca per titolo..."
-        :btnText="btnText"
-      />
+    <header id="main-header">
+      <div class="row container">
+        <img src="./assets/img/logo.png" alt="logo">
+        <Search
+          @searchMovie="search"
+          :btnText="btnText"
+        />
+      </div>
     </header>
     <main>
       <Gallery :movies="catalogs" />
@@ -71,12 +73,27 @@ export default {
 </script>
 
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  @import "assets/scss/style.scss";
+#main-header{
+  background-color:$dark-color;
+  height: 100px;
+  width:100%;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+ 
+  .row{
+  display: flex;
+  height: 100%;
+  justify-content: space-between;
+  align-items: center;
+  }
+
+  img{
+    height:100%;
+    width: 15%;
+  };
 }
 </style>
