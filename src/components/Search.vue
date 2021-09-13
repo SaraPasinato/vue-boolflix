@@ -1,6 +1,6 @@
 <template>
   <div>
-      <input type="text" placeholder="Ricerca" v-model.trim="currentText" @keyup.enter="$emit('searchMovie',currentText,'all')">
+      <input type="text" placeholder="Ricerca" v-model.trim="currentText" @keydown.enter="$emit('searchMovie',currentText,'all')" @keyup.enter="reset()">
       <button @click="$emit('searchMovie',currentText,'all')">{{btnText ||'Cerca'}}</button>
   </div>
 </template>
@@ -14,6 +14,11 @@ export default {
          currentText:'',
      }
  },
+ methods:{
+     reset(){
+         this.currentText='';
+     }
+ }
 }
 </script>
 
