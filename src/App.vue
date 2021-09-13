@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <header id="main-header">
+      <!-- header contains  search components and logo -->
       <div class="row container">
         <img src="./assets/img/logo.png" alt="logo">
         <Search
@@ -9,6 +10,7 @@
         />
       </div>
     </header>
+      <!-- main contains Gallery components with cards inside it -->
     <main>
       <Gallery :movies="catalogs" />
     </main>
@@ -37,6 +39,10 @@ export default {
     };
   },
   methods: {
+    /**
+     * @param text  {String}  for query API
+     * @param type  {String}  get one or more  API call
+     */
     search(text, type) {
       // controllo stringa vuota
       if (!text) this.movies = this.series = 0;
@@ -50,6 +56,11 @@ export default {
         this.catalogs = this.getApi(text, "search/tv", "series");
       }
     },
+    /**
+     * @param text {String} query text
+     * @param endpoint {String} endpoint to concat
+     * @param type {String}  to ref to arr
+     */
     getApi(text, endpoint, type) {
       axios
         .get(this.baseUri + endpoint, {

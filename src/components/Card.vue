@@ -42,6 +42,9 @@ export default {
     };
   },
   methods: {
+    /**
+     * @return  path {String} for img flag
+     */
     getFlag() {
       if (this.lang.includes(this.movie.original_language)) {
         this.pathFlag = require("../assets/img/" +
@@ -50,16 +53,22 @@ export default {
       }
       return this.pathFlag;
     },
-
+    /**
+     * @return  path {String} for img cover or a default img 
+     */
     getImage(path) {
       if (!path) return require("../assets/img/poster.png");
       return "https://image.tmdb.org/t/p/w342" + path;
     },
-
+     /**
+     * @return  conversion vote average 5 star  ceil rounded 
+     */
     getVote() {
       return Math.ceil(this.movie.vote_average / 2);
     },
-
+     /**
+     * @return print stars {String}
+     */
     renderStar() {
       const starSolid = this.getVote();
       let strStar = ``;

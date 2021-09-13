@@ -15,6 +15,9 @@ export default {
      }
  },
  methods:{
+     /**
+      * @return resetting currentText var
+      */
      reset(){
          this.currentText='';
      }
