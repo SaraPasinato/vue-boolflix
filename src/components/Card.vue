@@ -33,7 +33,7 @@
 
 <script>
 export default {
-  name: "CardMovie",
+  name: "Card",
   props: ["movie"],
   data() {
     return {

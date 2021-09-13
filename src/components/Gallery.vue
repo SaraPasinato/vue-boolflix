@@ -2,19 +2,19 @@
   <section id="gallery" class="container">
    <div class="row" >
        <div class="col" v-for="movie in movies" :key="movie.id" >
-           <CardMovie :movie="movie" />
+           <Card :movie="movie" />
        </div>
    </div>
   </section>
 </template>
 
 <script>
-import CardMovie from './CardMovie.vue';
+import Card from './Card.vue';
 export default {
     name:'Gallery',
     props:['movies'],
     components:{
-        CardMovie,
+        Card,
     }
 }
 
