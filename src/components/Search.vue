@@ -18,5 +18,7 @@ export default {
 </script>
 
 <style>
-
+button{
+    display: none;
+}
 </style>
