@@ -22,8 +22,29 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+@import '../assets/scss/vars.scss';
 button{
     display: none;
 }
+
+input{
+    display: block;
+    width: 100%;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: $dark-color;
+    background-color: $light-color;
+    background-clip: padding-box;
+    border: 1px solid $light-color;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+
+}
+
 </style>
