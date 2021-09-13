@@ -7,6 +7,7 @@
     </p>
     <p v-else>{{ movie.original_language }}</p>
     <p>{{getVote()}}</p>
+    <p v-html='renderStar()'></p>
     <img :src="getImage(movie.poster_path)" :alt="movie.title || movie.name">
   </div>
 </template>
@@ -37,8 +38,17 @@ export default {
     },
 
     getVote(){
-        return Math.ceil(this.movie.vote_average);
-    }
+        return Math.ceil(this.movie.vote_average /2);
+    },
+
+    renderStar(){
+        const starSolid=this.getVote();
+        let strStar=``;
+        for(let i=0; i<5; i++){
+            strStar+=(i<starSolid)?`<i class="fas fa-star"></i>`:`<i class="far fa-star"></i>`;
+        }
+        return strStar;
+    },
   },
 };
 </script>
