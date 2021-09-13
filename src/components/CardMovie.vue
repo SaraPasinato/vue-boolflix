@@ -32,7 +32,7 @@ export default {
     },
 
     getImage(path){
-        if(!path) return ;
+        if(!path) return require("../assets/img/poster.png");
         return 'https://image.tmdb.org/t/p/w342'+path;
     }
   },
