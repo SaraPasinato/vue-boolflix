@@ -6,7 +6,7 @@
       <img :src="pathFlag" :alt="movie.original_language" />
     </p>
     <p v-else>{{ movie.original_language }}</p>
-    <p>{{ movie.vote_average }}</p>
+    <p>{{getVote()}}</p>
     <img :src="getImage(movie.poster_path)" :alt="movie.title || movie.name">
   </div>
 </template>
@@ -34,6 +34,10 @@ export default {
     getImage(path){
         if(!path) return require("../assets/img/poster.png");
         return 'https://image.tmdb.org/t/p/w342'+path;
+    },
+
+    getVote(){
+        return Math.ceil(this.movie.vote_average);
     }
   },
 };
