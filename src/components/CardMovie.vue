@@ -83,8 +83,8 @@ export default {
   border-radius: 5px;
   color: $light-color;
 
-  height: 400px;
-  width: 300px;
+  height: 300px;
+  width: 250px;
 
   .lighter {
     font-weight: lighter;
