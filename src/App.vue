@@ -12,7 +12,7 @@
     </header>
       <!-- main contains Gallery components with cards inside it -->
     <main>
-      <Gallery :movies="catalogs" />
+      <Gallery :items="catalogs" />
     </main>
   </div>
 </template>

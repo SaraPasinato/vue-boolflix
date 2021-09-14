@@ -2,23 +2,23 @@
   <div class="card">
     <div class="flip-card-inner">
       <div class="flip-card-front">
-        <img :src="getImage" :alt="movie.title || movie.name" />
+        <img :src="getImage" :alt="item.title || item.name" />
       </div>
       <div class="flip-card-back">
         <h3>
           Titolo:
-          <span class="ligther">{{ movie.title || movie.name }}</span>
+          <span class="ligther">{{ item.title || item.name }}</span>
         </h3>
         <h4>
           Titolo Originale:
           <span class="lighter">{{
-            movie.original_title || movie.original_name
+            item.original_title || item.original_name
           }}</span>
         </h4>
         <p v-if="getFlag()">
-          <img class="flag" :src="getFlag" :alt="movie.original_language" />
+          <img class="flag" :src="getFlag" :alt="item.original_language" />
         </p>
-        <p class="lighter" v-else>Lingua: {{ movie.original_language }}</p>
+        <p class="lighter" v-else>Lingua: {{ item.original_language }}</p>
         <p>
           Voto:{{ getVote }}
           <i
@@ -28,8 +28,8 @@
             :class="star <= getVote ? 'fas' : 'far'"
           ></i>
         </p>
-        <p class="lighter" v-if="movie.overview">
-          <span class="fs-4">Overview: </span>{{ movie.overview }}
+        <p class="lighter" v-if="item.overview">
+          <span class="fs-4">Overview: </span>{{ item.overview }}
         </p>
       </div>
     </div>
@@ -39,7 +39,7 @@
 <script>
 export default {
   name: "Card",
-  props: ["movie"],
+  props: ["item"],
   data() {
     return {
       lang: ["it", "en"],
@@ -51,9 +51,9 @@ export default {
      * @return  path {String} for img flag
      */
     getFlag() {
-      if (this.lang.includes(this.movie.original_language)) {
+      if (this.lang.includes(this.item.original_language)) {
         this.pathFlag = require("../assets/img/" +
-          this.movie.original_language +
+          this.item.original_language +
           ".png");
       }
       return this.pathFlag;
@@ -64,14 +64,14 @@ export default {
      * @return  path {String} for img cover or a default img
      */
     getImage() {
-      if (!this.movie.poster_path) return require("../assets/img/poster.png");
-      return "https://image.tmdb.org/t/p/w342" + this.movie.poster_path;
+      if (!this.item.poster_path) return require("../assets/img/poster.png");
+      return "https://image.tmdb.org/t/p/w342" + this.item.poster_path;
     },
     /**
      * @return  conversion vote average 5 star  ceil rounded
      */
     getVote() {
-      return Math.ceil(this.movie.vote_average / 2);
+      return Math.ceil(this.item.vote_average / 2);
     },
   },
 };
