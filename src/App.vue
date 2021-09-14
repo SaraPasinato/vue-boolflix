@@ -55,7 +55,7 @@ export default {
   methods: {
     searchByGenre(currentGenre) {
         this.getApiDiscover("discover/movie",currentGenre,"movies");
-        this.getApiDiscover("discover/tv",currentGenre,"movies");
+        this.getApiDiscover("discover/tv",currentGenre,"series");
       
     },
     getAllGenre() {
