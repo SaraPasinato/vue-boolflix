@@ -2,17 +2,17 @@
   <div class="card">
     <div class="flip-card-inner">
       <div class="flip-card-front">
-        <img :src="getImage" :alt="item.title || item.name" />
+        <img :src="getImage" :alt="title" />
       </div>
       <div class="flip-card-back">
         <h3>
           Titolo:
-          <span class="ligther">{{ item.title || item.name }}</span>
+          <span class="ligther">{{title }}</span>
         </h3>
         <h4>
           Titolo Originale:
           <span class="lighter">{{
-            item.original_title || item.original_name
+           titleOriginal
           }}</span>
         </h4>
         <p v-if="getFlag()">
@@ -60,6 +60,12 @@ export default {
     },
   },
   computed: {
+    title(){
+      return this.item.title || this.item.name;
+    },
+    titleOriginal(){
+      return  this.item.original_title || this.item.original_name;
+    },
     /**
      * @return  path {String} for img cover or a default img
      */
