@@ -5,7 +5,7 @@
       <div class="row container">
         <img src="./assets/img/logo.png" alt="logo">
         <div class="filter-control">
-          <Select :items="genres" @getGenre="getAllGenre"/>
+          <Select :items="genres" @getGenre="getAllGenre" @searchByGenre="searchByGenre"/>
           <Search  @searchMovie="search" :btnText="btnText" />
         </div>  </div>
     </header>
@@ -53,6 +53,10 @@ export default {
      },
   },
   methods: {
+    searchByGenre(currentGenre) {
+        this.getApiDiscover("discover/movie",currentGenre,"movies");
+      
+    },
     getAllGenre() {
         this.getApiList("genre/movie/list", "genresMovie");
         this.getApiList("genre/tv/list", "genresSeries");
@@ -102,6 +106,23 @@ export default {
         })
         .then((res) => {
           this[type] = res.data.genres;
+
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+    getApiDiscover(endpoint,genre,type) {
+      axios
+        .get(this.baseUri + endpoint, {
+          params: {
+            api_key: this.apiKey,
+            language: "it-IT",
+            with_genres:genre,
+          },
+        })
+        .then((res) => {
+          this[type] = res.data.results;
 
         })
         .catch((err) => {

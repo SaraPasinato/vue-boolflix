@@ -1,6 +1,6 @@
 <template>
   <div class="me-3">
-      <select v-model="currentGenre" @focus="$emit('getGenre')">
+      <select v-model="currentGenre" @focus="$emit('getGenre')" @click="$emit('searchByGenre',currentGenre)">
           <option value="">All</option>
           <option v-for="item in items" :key="item.id" :value="item.id">{{item.name}}</option>
          
